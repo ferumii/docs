@@ -1,4 +1,8 @@
 modx-rtfm
 =========
 
-RTFM of MODX. Translating to russian
+RTFM of MODX. Версия на русском языке
+
+Разработка мануала сообща через pull-requests + issues.
+
+Автоматический билд после вливания в мастер на сайт.
