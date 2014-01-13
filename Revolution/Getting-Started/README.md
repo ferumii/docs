@@ -1,6 +1,6 @@
 # Содержание
 
-* __[Текущая страница](./Getting-Started.md)__
+__[Начинаем](./Getting-Started.md)__
 
 * [Требования к серверу](./Server-Requirements/Server-Requirements.md)
 * [Установка](./Installation/Installation.md)
