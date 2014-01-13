@@ -1,6 +1,4 @@
-# MODX Revolution 2.x
-
-### Содержание
+# Содержание
 
 * [Начинаем] (./Getting-Started/Getting-Started.md)
 * [Создание сайтов на MODx] (./Making-Sites-with-MODx/Making-Sites-with-MODx.md)
