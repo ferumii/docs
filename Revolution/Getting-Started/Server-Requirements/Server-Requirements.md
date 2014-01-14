@@ -1,8 +1,5 @@
 # Требования к серверу
 
-### Содержание
-* [Проблемы с MySQL 5.0.51](./MySQL-5.0.51-Issues.md)
-
 ### Поддерживаемые операционные системы
 
 * Linux x86, x86-64
@@ -34,7 +31,7 @@
 
 ### Параметры конфигурации PHP при сборке
 
-```bash
+``` bash
 ./configure --with-apxs2=/usr/local/bin/apxs --with-mysql --prefix=/usr/local --with-pdo-mysql --with-zlib
 ```
 
