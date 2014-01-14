@@ -2,5 +2,5 @@
 
 ## Содержание
 
-[Окружение разработчика](./Development-Environments.md)
-[Стандарты кодирования PHP для MODx](./MODX-PHP-Coding-Standards.md)
+* [Окружение разработчика](./Development-Environments.md)
+* [Стандарты кодирования PHP для MODx](./MODX-PHP-Coding-Standards.md)
