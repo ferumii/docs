@@ -1,7 +1,7 @@
 # Git FAC (часто используемые команды)
 
-* [How do I get and keep my local develop branch in sync?](./#1)
-* [How do I create a feature branch?](./#2)
+* [How do I get and keep my local develop branch in sync?](#1)
+* [How do I create a feature branch?](#2)
 
 ## [](#1) How do I get and keep my local develop branch in sync?
 First, with MODX's collaboration and branching model, you won't be making commits to your develop branch, so it's easy to keep it up to date.
