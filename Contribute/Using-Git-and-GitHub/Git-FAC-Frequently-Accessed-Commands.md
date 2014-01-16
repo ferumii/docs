@@ -1,9 +1,9 @@
 # Git FAC (часто используемые команды)
 
-* [How do I get and keep my local develop branch in sync?](#header1)
-* [How do I create a feature branch?](#header2)
+* [How do I get and keep my local develop branch in sync?]()
+* [How do I create a feature branch?]()
 
-## How do I get and keep my local develop branch in sync? ## {#header1}
+## How do I get and keep my local develop branch in sync?
 First, with MODX's collaboration and branching model, you won't be making commits to your develop branch, so it's easy to keep it up to date.
 
 ``` bash
@@ -15,7 +15,7 @@ First, with MODX's collaboration and branching model, you won't be making commit
 
 This assumes that the modxcms or blessed repo is set up as a remote named upstream. (git remote manpage: http://www.kernel.org/pub/software/scm/git/docs/git-remote.html)
 
-## How do I create a feature branch? ## {#header2}
+## How do I create a feature branch?
 If you've just merged in the upstream repo's develop branch, then it's simple:
 
 ``` bash
