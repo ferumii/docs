@@ -1,6 +1,6 @@
 # Git FAC (часто используемые команды)
 
-* [How do I get and keep my local develop branch in sync?]()
+* [How do I get and keep my local develop branch in sync?](#How do I get and keep my local develop branch in sync?)
 * [How do I create a feature branch?]()
 
 ## How do I get and keep my local develop branch in sync?
