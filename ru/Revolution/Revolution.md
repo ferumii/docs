@@ -1,3 +1,8 @@
+---
+pagetitle: MODX Revolution 2.x
+longtitle: MODX Revolution 2.x
+description: MODX Revolution 2.x
+---
 # MODX Revolution 2.x
 
 Документация по MODx Revolution версии 2 и последующих минорных версий. В разделе описаны основные приемы работы с данной версией CMS. Так же документация включает разделы как для разработчиков, так и для администраторов сайтов и обычных пользователей.
