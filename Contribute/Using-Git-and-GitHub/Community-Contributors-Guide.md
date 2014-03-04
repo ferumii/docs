@@ -1,43 +1,43 @@
 # Руководство участника сообщества
 
-## A GitHub-based branching strategy for collaborative development
+## Стратегия ветвления для совместной разработки в GitHub
 
 In order to facilitate collaborative development on the MODX source code managed at GitHub, a clear and consistent branching strategy has been adopted. This strategy consists of maintaining two permanent branches in each main Git repository: master, which represents code that is assumed to be in a production-ready state, and develop, which contains work to be incorporated into the "next release". However, there are a number of important supporting branches that will only live for a limited amount of time, including feature branches, production hotfix branches, and specific release branches. Though they are normal Git branches, they differ significantly in the way they are used in the development process.
 
-### The permanent branches
+### Постоянные ветки
 
-The `master` branch should be familiar to any Git user, representing the stable, production-ready code in the repository. In our process, we maintain another branch with an infinite lifetime, `develop`. You can think of this as the "integration branch" where all changes are delivered for the next release. This is also where nightly builds will originate.
+Ветка `master` должна быть знакома любому пользователю git, предоставляет стабильный, готовый к боевому использованию код в репозитории. В нашем процессе у нас еще одна ветка с вечным циклом жизни - `develop`. Вы можете считать, что это так называемая "собирающая ветка", где все изменения собираются к следующему релизу. Так же из нее собираются ночные сборки. 
 
-When the code in `develop` reaches a stable point and is ready to be released, all of the changes will be merged back to the `master` branch and tagged with a release number. Each merge commit back to `master` represents a production release, by definition.
+Когда код в `develop` достигает стабильной точки и готов к релизу, все изменения будут слиты в `master` ветку и помечены тегов с номером релиза. Каждый коммит слияния в `master` представляет собой выпуск релиза, по определению.
 
-### Supporting branches
+### Поддержка веток
 
-There are a number of supporting branches in our process that are used to aid in collaborative development of bugfixes, translation updates, features, preparing releases, and quickly applying patches to production releases. These branches are referred to as:
+В нашем процессе существует целый список вспомогательных веток, которые используются, чтобы помочь в совместной разработке исправлений, обновлений переводов, фич, подготовки релизов и быстрого применения патчей в готовых релизах. Эти ветки:
 
-* __Feature branches__ - these are the branches that you will be working with as a community contributor
-* Release branches
-* Hotfix branches
+* __Ветки фич (Feature branches)__ - это ветки, с которыми будут работать разработчики из сообщества
+* Ветки релизов
+* Ветки быстрых исправлений (Hotfix branches)
 
-Each has a special purpose and strict rules governing origination and merge targets, but are otherwise normal Git branches.
+Каждая из них имеет специальное назначение и строгие правила, регулирующие создание и слияние, но в остальном это обычные git-ветки.
 
-### Working with your GitHub fork
+### Работа с вашим форком на GitHub
 
-MODx contributors must work directly with their private forks on GitHub. Here is the suggested way to prepare your local repository as a developer for contributing back to any MODx project:
+MODX разработчики должны работать напрямую со своими личными форками на GitHub. Здесь предлагается способ подготовить свой локальный репозиторий разработчика для разработки любого MODX проекта:
 
 	$ git clone git@github.com:YourGitUsername/revolution.git
 	$ cd revolution
 	$ git remote add upstream -f http://github.com/modxcms/revolution.git
 
-This setup makes your fork the standard `origin` remote, and adds/fetches the "blessed" repository as the remote `upstream`. You may want to add other remotes to other developer forks as well, and I would name those remotes appropriately so you can keep track of each one.
+Это устанавливает ваш форк в качестве стандартного удаленного репозитория `origin` и добавляет "священный" репозиторий под именем `upstream`. Вы можете добавить ссылки на форки других разработчиков и назвать их так, чтобы вы могли отслеживать каждого из них.
 
-You'll want to go ahead and create local tracking branches for the permanent branches from your fork, a.k.a. `origin`:
+Пора идти вперед и создавать локальные ветки для постоянных веток из вашего форка, который `origin`: 
 
 	$ git checkout -b master origin/master
 	Switched to a new branch "master"
 	$ git checkout -b develop origin/develop
 	Switched to a new branch "develop"
 
-To keep your local tracking branches for `develop` and `master` up-to-date from the `upstream` repository:
+Чтобы держать свои локальные ветки свежими относительно `develop` and `master`, обновляйтесь с репозитория `upstream`:
 
 	$ git fetch upstream
 	$ git checkout develop
@@ -48,29 +48,29 @@ To keep your local tracking branches for `develop` and `master` up-to-date from 
 	$ git merge --ff-only upstream/master
 	$ git push origin develop master
 
-Note however, that the push is mainly for show, as the permanent branches should never be a target for contributor commits, even in the forks. IOW, `develop` and `master` in your fork should always match the `upstream` branches of the same name. It is expected that all contributions will be submitted via a feature or hotfix branch originating from the appropriate permanent branch, or a bug fix branch originating from a release branch in the upstream repository.
+Стоит отметить, что push в осноном для "показать" и не стоит пушить в постоянные ветки, даже в своих форках. Другими словами, имена веток `develop` и `master` в вашем форке должны всегда соответствовать именам веток в `upstream`. Ожидается, что все исправления будут отправлены в ветках для фич или быстрых исправлений, происходящих от соответствующей постоянной ветки или ветка с исправлением ошибки, происходящая от ветки релиза в `upstream` репозитории.
 
-Also note the `--ff-only` flag ensures that only fast-forward merges are performed (in case you accidentally do commit to the main branches on your fork without realizing it).
+Также обратите внимание на флаг `--ff-only`, который гарантирует fast-forward слияние (в случае, когда вы сделали коммит в основную ветку не осознавая этого).
 
-> #### Important
-> Please make sure you have your autocrlf settings set appropriately before making any commits to your fork. See http://help.github.com/dealing-with-lineendings/ to determine the setting you need based on the platform you are developing on.
+> #### Важно
+> Пожалуйста, удостоверьтесь в том, что у вас установлена настройка autocrlf перед тем, как коммитить в ваш форк. Смотрите http://help.github.com/dealing-with-lineendings/, чтобы определить, какие настройки вам нужны. Это зависит от платформы, на которой вы работаете.
  	
-### Feature branches
+### Ветки для фич (Feature Branches)
 
-* May branch from: develop
-* Naming convention: anything except master, develop, release-, or hotfix-
+* Может ветвиться от: develop
+* Соглашения именования: что угодно, кроме master, develop, release-, или hotfix-
 
 Feature branches, also known as topic branches, are used to develop a specific new feature (or set of features) for the next release, or for a future release. The target release for the feature to be incorporated may well be unknown, and the branch will exist as long as that feature is in development. Once it is accepted and ready to be incorporated in the next release, it is merged into the develop branch by an integrator. If the feature is never completed or accepted, it can simply be discarded.
 
 Feature branches typically exist in developer forks, and only for sharing purposes, not in the "blessed", or upstream repository.
 
-### Creating a feature branch
+#### Создание ветки для фичи
 
 When starting work on a new feature, branch off from the develop branch.
 
 	$ git checkout -b myfeature develop
 
-### Switched to a new branch "myfeature"
+#### Переключиться на новую ветку "myfeature"
 
 Submitting a pull request for a finished feature
 Once you have completed development of a feature on a branch, you should first make sure your work is replayed over the latest updates from develop:
@@ -91,7 +91,7 @@ Now simply push your feature to your fork (you can do this early on if you want 
 	
 And you are ready to submit a pull request for your feature branch.
 
-### Bug Branches
+### Ветки для ошибок (Bug Branches)
 
 If there's a bug in the MODX Bug Tracker that you would like to fix, here's a simple workflow you can follow.
 
