@@ -51,10 +51,11 @@ If you are working on a feature which does not have a ticket, you can name it an
 ```
 
 ## Do I need a new feature branch for every issue that I work on?
-Yes.
+
+Да.
 
 ``` bash
-	$ echo 'Yes'
+	$ echo 'Да'
 ```
 
 ## How do I keep my feature branch in sync with the upstream develop branch?
@@ -72,6 +73,7 @@ In fact, it's generally a good idea to do this before any final commits to your 
   Switched to branch "myfeature"
   $ git rebase develop
 ```
+
 To learn more, here's the git rebase manpage: http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html
 
 ## Do I really need to worry about the master branch?
