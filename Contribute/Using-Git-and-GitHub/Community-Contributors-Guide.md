@@ -2,7 +2,7 @@
 
 ## Стратегия ветвления для совместной разработки в GitHub
 
-In order to facilitate collaborative development on the MODX source code managed at GitHub, a clear and consistent branching strategy has been adopted. This strategy consists of maintaining two permanent branches in each main Git repository: master, which represents code that is assumed to be in a production-ready state, and develop, which contains work to be incorporated into the "next release". However, there are a number of important supporting branches that will only live for a limited amount of time, including feature branches, production hotfix branches, and specific release branches. Though they are normal Git branches, they differ significantly in the way they are used in the development process.
+Для того, чтобы облегчить совместную разработку и управление исходными кодами MODX на GitHub и была принята четкая и последовательная стратегия ветвления. Эта стратегия заключается в поддержании двух постоянных веток в каждом главной репозитории MODX: master, которая предоставляет код в пригодном для боевого применения виде, и develop, которая содержит код, который будет включен в следующий релиз. Однако существует целый ряд важных поддерживаемых веток, который будут жить только определенное время, включая ветки для фич, ветки быстрых исправлений мастера и особенные релизные ветки. Хотя они и обычные git-ветки, они существенно отличаются по тому, как они будут использоваться в процессе разработки.
 
 ### Постоянные ветки
 
@@ -60,20 +60,20 @@ MODX разработчики должны работать напрямую с�
 * Может ветвиться от: develop
 * Соглашения именования: что угодно, кроме master, develop, release-, или hotfix-
 
-Feature branches, also known as topic branches, are used to develop a specific new feature (or set of features) for the next release, or for a future release. The target release for the feature to be incorporated may well be unknown, and the branch will exist as long as that feature is in development. Once it is accepted and ready to be incorporated in the next release, it is merged into the develop branch by an integrator. If the feature is never completed or accepted, it can simply be discarded.
+Ветки для фич, так же известные как тематические ветки, используются для разработки конкретных новых функций (или наборов функций) для следующего релиза или для будущего релиза. Конечный релиз, куда следовало бы включить новую функцию, может быть незвестен и такая ветка будет существовать до тех пор, пока эта функция находится в разработке. Как только функция будет одобрена и готова к включениею в следующий релиз, ветка будет слита в ветку develop интегратором. Если функция никогда не завершается или не принимается, она может быть отброшена (удалена).
 
-Feature branches typically exist in developer forks, and only for sharing purposes, not in the "blessed", or upstream repository.
+Ветки фич обычно существуют в форках разработчиков и только для демонстрации предложений, но не в "священном" или upstream репозитории.
 
 #### Создание ветки для фичи
 
-When starting work on a new feature, branch off from the develop branch.
+Когда начинаете работу над новой функцией, сделайте ветку от ветки develop.
 
 	$ git checkout -b myfeature develop
+	Switched to a new branch "myfeature"
 
-#### Переключиться на новую ветку "myfeature"
+#### Отправка pull request для завершенной функции
 
-Submitting a pull request for a finished feature
-Once you have completed development of a feature on a branch, you should first make sure your work is replayed over the latest updates from develop:
+После того, как вы завершили разработку функции в ветке, вы должны сначала убедиться, что ваша задача хорошо работает с последними обновлениями из ветки develop:
 
 	$ git fetch upstream
 	$ git checkout develop
@@ -83,44 +83,44 @@ Once you have completed development of a feature on a branch, you should first m
 	Switched to branch "myfeature"
 	$ git rebase develop
 	
-This will make it easier for integrators to incorporate your work without conflict.
+Это позволит интегратору легче включить вашу работу в проект и без разбора раконфликтов.
 
-Now simply push your feature to your fork (you can do this early on if you want to share your feature branch for collaboration):
+Теперь просто запушьте вашу функцию в ваш форк (вы можете следать это раньше, если хотите поделиться наработками и совместно с другими разработчиками что-то исправить):
 
 	$ git push origin myfeature:myfeature
 	
-And you are ready to submit a pull request for your feature branch.
+И теперь вы готовы слать pull request для вашей тематической ветки.
 
 ### Ветки для ошибок (Bug Branches)
 
-If there's a bug in the MODX Bug Tracker that you would like to fix, here's a simple workflow you can follow.
+Если в багтрекерe MODX есть ошибка, которую вы хотите исправить, следуйте вот этому простому процессу.
 
-First, fork the MODX Git repo on github, then clone your fork (see above).
+Сначала форкните MODX репозиторий на GitHub, затем склонируйте ваш форк (смотрите ниже).
 
-You may wish to start clean if you already have a release branch locally. E.g. if you already have a "release-2.2" branch, you can delete it locally and start clean:
+Вы можете начать с чистого листа, если у вас уже есть локальная ветка релиза. Например, если у вас уже есть ветка "release-2.2", вы можете удалить ее локально и начать заново:
 
 	git branch -D release-2.2
 	
-Next, you'll want to checkout the branch fresh from upstream:
+Далее вы должны переключиться на свежую ветку из upstream:
 
 	git fetch upstream
 	git checkout -b release-2.2 upstream/release-2.2
 	
-Before you begin work on coding your fix, create a branch devoted to your upstream target (where XXXX is the bug number):
+Перед тем, как начать писать код для вашего фикса, создайте ветку, посвященную вашей задаче (где XXXX - номер бага):
 
 	git checkout -b bug-XXXX release-2.2
 	
-Now you're ready to do your changes. Fix the bug!
+Теперь вы готовы вносить ваши изменения. Исправляйте этот баг!
 
-Once the bug is fixed, you can commit your changes and push your bugfix branch to your fork:
+После того, как ошибка исправлена, вы можете закомитить свои изменения и сделать push вашей ветки с исправлением в ваш форк:
 
 	git commit .
 	git push origin bug-XXXX
 	
-Then you're ready to issue your pull request from Github.
+Затем вы будете готовы отправить ваш pull request через GitHub.	
 
-Log into your Github account, find your MODX fork, then hit the button at the top that says "Pull Request".
+Войдите в ваш аккаунт на GitHub, найдите ваш MODX форк, затем нашмите кнопку вверху, на которой написано "Pull Request".
 
 ![](http://rtfm.modx.com/download/attachments/33948128/github_modx_pull_request.jpg?version=1&modificationDate=1370290791000)
 
-Make sure you select the "base branch" – you want to issue the pull request to the branch that initially checked out.
+Удостоверьтесь, что вы выбрали "основную ветку" - вы хотите отправить pull request в ветку, от которой вы начинали работу.
