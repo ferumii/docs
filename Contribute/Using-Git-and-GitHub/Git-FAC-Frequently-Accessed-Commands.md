@@ -75,7 +75,7 @@
 
 Нет, не нужно. Если вы хотите, вы можете. Но в общем это не критично для рабочего процесса разработчика.
 
-[1]: #how-do-i-get-and-keep-my-local-develop-branch-in-sync
+[1]: #как-мне-создать-и-держать-свежей-локальную-ветку-develop
 [2]: #how-do-i-create-a-feature-branch
 [3]: #is-there-a-naming-convention-for-feature-branches
 [4]: #do-i-need-a-new-feature-branch-for-every-issue-that-i-work-on
