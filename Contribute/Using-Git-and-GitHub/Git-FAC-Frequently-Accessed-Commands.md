@@ -1,15 +1,15 @@
 # Git FAC (часто используемые команды)
 
-* [How do I get and keep my local develop branch in sync?][1]
-* [How do I create a feature branch?][2]
-* [Is there a naming convention for feature branches?][3]
-* [Do I need a new feature branch for every issue that I work on?][4]
-* [How do I keep my feature branch in sync with the upstream develop branch?][5]
-* [Do I really need to worry about the master branch?][6]
+* [Как мне создать и держать свежей локальную ветку develop?][1]
+* [Как мне создать тематическую ветку?][2]
+* [Как следует называть тематические ветки?][3]
+* [Нужно ли мне создавать новую тематическую ветку на каждый тикет, над которым я работаю?][4]
+* [Как мне сохранять свежесть мой ветки относительно develop ветки в upstream?][5]
+* [Нужно ли мне думать о ветке master?][6]
 
-## How do I get and keep my local develop branch in sync?
+## Как мне создать и держать свежей локальную ветку develop?
 
-First, with MODX's collaboration and branching model, you won't be making commits to your develop branch, so it's easy to keep it up to date.
+Для начала, в соответствии с моделью ветвления процесса MODX разработки, вы не будете коммитить в вашу develop ветку, поэтому ее легко обновлять.
 
 ``` bash
 	$ git fetch upstream
@@ -18,11 +18,11 @@ First, with MODX's collaboration and branching model, you won't be making commit
 	$ git merge --ff-only upstream/develop
 ```
 
-This assumes that the modxcms or blessed repo is set up as a remote named upstream. (git remote manpage: http://www.kernel.org/pub/software/scm/git/docs/git-remote.html)
+Это означает, что modxcms или другой репозиторий установлен как upstream в remote. (git remote manpage: http://www.kernel.org/pub/software/scm/git/docs/git-remote.html)
 
-## How do I create a feature branch?
+## Как мне создать тематическую ветку?
 
-If you've just merged in the upstream repo's develop branch, then it's simple:
+Если вы только что влили свежие изменения из ветки develop из upstream репозитория, тогда это очень просто:
 
 ``` bash
 	$ git checkout develop
@@ -30,39 +30,34 @@ If you've just merged in the upstream repo's develop branch, then it's simple:
 	$ git checkout -b myFeatureBranchName
 ```
 
-## Is there a naming convention for feature branches?
+## Как следует называть тематические ветки?
 
-If you are fixing a bug from a ticket in the issue tracker (please file a ticket for the bug first if there isn't one) then you can name your branch "bug-xxxx" where xxxx is the issue number from the bug tracker.
+Если вы правите ошибку из тикета в трекере ошибок (пожалуйста, создайте сначала тикет, если его нет), тогда вы можете назвать вашу ветку "bug-xxxx", где xxxx - номер тикета из трекера ошибок.
 
 ```
 	$ git checkout -b bug-1234
 ```
-
-If you are working on an "improvement" ticket in the issue tracker, use the prefix "impr-"
+Если вы работаете над "улучшением" в трекере ошибок, используйте префикс "impr-".
 
 ``` bash
 	$ git checkout -b impr-2345
 ```
 
-If you are working on a feature which does not have a ticket, you can name it anything except master, develop, release-, or hotfix-
+Если вы работаете над задачей, которая не имеет тикета, вы можете назвать ветку как угодно, кроме слов master, develop, release-, or hotfix-.
 
 ``` bash
 	$ git checkout -b myAwesomeFeature
 ```
 
-## Do I need a new feature branch for every issue that I work on?
+## Нужно ли мне создавать новую тематическую ветку на каждый тикет, над которым я работаю?
 
 Да.
 
-``` bash
-	$ echo 'Да'
-```
+## Как мне сохранять свежесть мой ветки относительно develop ветки в upstream?
 
-## How do I keep my feature branch in sync with the upstream develop branch?
+Если вы работаете над улучшением, которое занимает время, может быть полезным синхронизировать его с текущими изменениями из основного репозитория. Git позволяет "накатить" ваши коммиты поверх изменений в ветке develop с помощью команды rebase.
 
-If you're working on a feature that's taking a while, you may find it beneficial to keep in sync with upstream changes. Git allows you to "replay" your commits over top of changes in the develop branch using the rebase command.
-
-In fact, it's generally a good idea to do this before any final commits to your fork and issuing a Pull Request.
+На самом деле, это хорошая практика делать это перед финальной отправкой коммитов в ваш форк для последующего pull request-а.
 
 ``` bash
   $ git fetch upstream
@@ -74,15 +69,11 @@ In fact, it's generally a good idea to do this before any final commits to your 
   $ git rebase develop
 ```
 
-To learn more, here's the git rebase manpage: http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html
+Чтобы лучше разобраться, есть документация по git rebase: http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html
 
-## Do I really need to worry about the master branch?
+## Нужно ли мне думать о ветке master?
 
-No, not really. If you want to, you can. But it's not critical to the workflow of a contributor at all.
-
-``` bash
-	$
-````
+Нет, не нужно. Если вы хотите, вы можете. Но в общем это не критично для рабочего процесса разработчика.
 
 [1]: #how-do-i-get-and-keep-my-local-develop-branch-in-sync
 [2]: #how-do-i-create-a-feature-branch
