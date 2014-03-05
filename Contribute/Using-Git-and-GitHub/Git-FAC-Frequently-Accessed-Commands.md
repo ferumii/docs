@@ -77,7 +77,7 @@
 
 [1]: #Как-мне-создать-и-держать-свежей-локальную-ветку-develop
 [2]: #Как-мне-создать-тематическую-ветку
-[3]: #is-there-a-naming-convention-for-feature-branches
-[4]: #do-i-need-a-new-feature-branch-for-every-issue-that-i-work-on
-[5]: #how-do-i-keep-my-feature-branch-in-sync-with-the-upstream-develop-branch
-[6]: #do-i-really-need-to-worry-about-the-master-branch
+[3]: #Как-следует-называть-тематические-ветки
+[4]: #Нужно-ли-мне-создавать-новую-тематическую-ветку-на-каждый-тикет-над-которым-я-работаю
+[5]: #Как-мне-сохранять-свежесть-мой-ветки-относительно-develop-ветки-в-upstream
+[6]: #Нужно-ли-мне-думать-о-ветке-master
